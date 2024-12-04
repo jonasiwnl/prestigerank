@@ -4,19 +4,25 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
-import * as $api_joke from "./routes/api/joke.ts";
+import * as $api_battle from "./routes/api/battle.ts";
+import * as $api_getmatchup from "./routes/api/getmatchup.ts";
+import * as $battle from "./routes/battle.tsx";
 import * as $index from "./routes/index.tsx";
-
+import * as $BattleIsland from "./islands/BattleIsland.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
-    "./routes/api/joke.ts": $api_joke,
+    "./routes/api/battle.ts": $api_battle,
+    "./routes/api/getmatchup.ts": $api_getmatchup,
+    "./routes/battle.tsx": $battle,
     "./routes/index.tsx": $index,
   },
-  islands: {},
+  islands: {
+    "./islands/BattleIsland.tsx": $BattleIsland,
+  },
   baseUrl: import.meta.url,
 } satisfies Manifest;
 

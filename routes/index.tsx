@@ -1,11 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
 import { FreshContext } from "$fresh/server.ts";
 import { CompanyRow } from "../components/CompanyRow.tsx";
-
-const supabase = createClient(
-  Deno.env.get("SUPABASE_URL")!,
-  Deno.env.get("SUPABASE_ANON_KEY")!,
-);
+import { supabase } from "../util/supabase.ts";
 
 export default async function Home(_req: Request, _ctx: FreshContext) {
   const { data, error } = await supabase.from("companies").select().order(

@@ -1,8 +1,11 @@
-import { Company } from "../types/types.ts";
+import { Company } from "../util/types.ts";
+import { ComponentProps } from "preact";
 
-export const CompanyRow = ({ company }: { company: Company }) => {
+export const CompanyRow = (
+  { company, ...props }: { company: Company } & ComponentProps<"li">,
+) => {
   return (
-    <li>
+    <li {...props}>
       <div>{company.name} elo: {Math.round(company.elo)}</div>
     </li>
   );
