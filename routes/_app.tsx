@@ -5,8 +5,7 @@ export default function App({ Component }: PageProps) {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>fresh_template</title>
-        
+        <title>Idk what to name this yet</title>
       </head>
       <body>
         <Component />
