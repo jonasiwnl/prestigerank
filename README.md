@@ -1,6 +1,7 @@
 # I don't have a name yet
 
-A head-to-head user ranking system for company prestige. Built with Deno, Fresh, and Supabase.
+A head-to-head user ranking system for company prestige. Built with Deno, Fresh,
+and Supabase.
 
 ## Building Locally
 

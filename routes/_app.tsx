@@ -1,4 +1,5 @@
 import { type PageProps } from "$fresh/server.ts";
+import { Header } from "../components/Header.tsx";
 export default function App({ Component }: PageProps) {
   return (
     <html>
@@ -8,7 +9,10 @@ export default function App({ Component }: PageProps) {
         <title>Idk what to name this yet</title>
       </head>
       <body>
-        <Component />
+        <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
+          <Header />
+          <Component />
+        </div>
       </body>
     </html>
   );

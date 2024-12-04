@@ -4,5 +4,5 @@ export type Company = {
   elo: number;
   battles: bigint;
   website: string;
-  levels_link: string;
+  levels_url: string;
 };

@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { FreshContext } from "$fresh/server.ts";
+import { CompanyRow } from "../components/CompanyRow.tsx";
 
 const supabase = createClient(
   Deno.env.get("SUPABASE_URL")!,
@@ -7,13 +8,16 @@ const supabase = createClient(
 );
 
 export default async function Home(_req: Request, _ctx: FreshContext) {
-  const { data, error } = await supabase.from("companies").select().limit(20);
+  const { data, error } = await supabase.from("companies").select().order(
+    "elo",
+    { ascending: false },
+  ).limit(20);
   if (error) {
-    return <p>Sorry, we encountered an error: {error.message}</p>
+    return <p>Sorry, we encountered an error: {error.message}</p>;
   }
 
   return (
-    <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
+    <>
       <img
         class="my-6"
         src="/logo.svg"
@@ -25,8 +29,8 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
         Which company has the most prestige?
       </p>
       <ul>
-        {data?.map((company) => <li key={company.id}>{company.name}</li>)}
+        {data?.map((company) => <CompanyRow company={company} />)}
       </ul>
-    </div>
+    </>
   );
 }
