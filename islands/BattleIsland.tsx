@@ -41,9 +41,6 @@ export function BattleIsland() {
   if (error) {
     return <p>Sorry, we encountered an error: {error}</p>;
   }
-  if (loading) {
-    return <p>Loading...</p>;
-  }
   if (data.length !== 2) {
     return <p>Sorry, we couldn't find a matchup</p>;
   }
@@ -51,18 +48,20 @@ export function BattleIsland() {
   return (
     <>
       <button onClick={fetchMatchup}>Skip</button>
-      <ul>
-        <CompanyRow
-          onClick={() => handleBattle({ winner: data[0], loser: data[1] })}
-          company={data[0]}
-          showElo={false}
-        />
-        <CompanyRow
-          onClick={() => handleBattle({ winner: data[1], loser: data[0] })}
-          company={data[1]}
-          showElo={false}
-        />
-      </ul>
+      {loading ? <p>Loading...</p> : (
+        <ul>
+          <CompanyRow
+            onClick={() => handleBattle({ winner: data[0], loser: data[1] })}
+            company={data[0]}
+            showElo={false}
+          />
+          <CompanyRow
+            onClick={() => handleBattle({ winner: data[1], loser: data[0] })}
+            company={data[1]}
+            showElo={false}
+          />
+        </ul>
+      )}
     </>
   );
 }

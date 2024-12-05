@@ -25,7 +25,9 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
         Which company has the most prestige?
       </p>
       <ul>
-        {data?.map((company: Company) => <CompanyRow company={company} showElo={true} />)}
+        {data?.map((company: Company) => (
+          <CompanyRow company={company} showElo={true} />
+        ))}
       </ul>
     </>
   );
