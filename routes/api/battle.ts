@@ -1,6 +1,13 @@
 import { FreshContext } from "$fresh/server.ts";
 import { supabase } from "../../util/supabase.ts";
 
+/**
+ * Standard ELO rating system with a dynamic K-value based on matches played
+ * K = [ (10_000 - played) / 10_000 min=0, max=1 ] * 25 + 5
+ * 
+ * E_win is the probability that the winner will win
+ * new elo = old elo + K * (actual - expected)
+ */
 export const handler = async (
   req: Request,
   _ctx: FreshContext,
@@ -8,10 +15,16 @@ export const handler = async (
   const { winner, loser } = await req.json();
 
   const E_win = 1 / (1 + 10 ** ((loser.elo - winner.elo) / 400));
+  const K_win = Math.max(10_000 - winner.battles, 0) / 10_000 * 25 + 5;
   const E_lose = 1 - E_win;
+  const K_lose = Math.max(10_000 - loser.battles, 0) / 10_000 * 25 + 5;
 
-  const newWinnerElo = winner.elo + 10 * (1 - E_win);
-  const newLoserElo = loser.elo + 10 * -E_lose;
+  const newWinnerElo = winner.elo + K_win * (1 - E_win);
+  const newLoserElo = loser.elo + K_lose * -E_lose;
+
+  // console.info(`Winner: ${winner.name} K-value: ${K_win} ${winner.elo} -> ${newWinnerElo}`);
+  // console.info(`Loser: ${loser.name} K-value: ${K_lose} ${loser.elo} -> ${newLoserElo}`);
+  // console.log();
 
   const { error: updateWinnerError } = await supabase.from("companies").update({
     elo: newWinnerElo,
