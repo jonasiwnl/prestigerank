@@ -34,21 +34,12 @@ export function BattleIsland() {
     fetchMatchup();
   };
 
-  useEffect(() => {
-    fetchMatchup();
-  }, []);
-
-  if (error) {
-    return <p>Sorry, we encountered an error: {error}</p>;
-  }
-  if (data.length !== 2) {
-    return <p>Sorry, we couldn't find a matchup</p>;
-  }
-
-  return (
-    <>
-      <button onClick={fetchMatchup}>Skip</button>
-      {loading ? <p>Loading...</p> : (
+  const getBattleHtml = (loading: boolean, data: Company[]) => {
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (data.length === 2) {
+      return (
         <ul>
           <CompanyRow
             onClick={() => handleBattle({ winner: data[0], loser: data[1] })}
@@ -61,7 +52,23 @@ export function BattleIsland() {
             showElo={false}
           />
         </ul>
-      )}
+      );
+    }
+    return <p>Sorry, we couldn't find a matchup</p>;
+  };
+
+  useEffect(() => {
+    fetchMatchup();
+  }, []);
+
+  if (error) {
+    return <p>Sorry, we encountered an error: {error}</p>;
+  }
+
+  return (
+    <>
+      <button onClick={fetchMatchup}>Skip</button>
+      {getBattleHtml(loading, data)}
     </>
   );
 }

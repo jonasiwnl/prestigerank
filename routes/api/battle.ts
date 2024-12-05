@@ -2,9 +2,15 @@ import { FreshContext } from "$fresh/server.ts";
 import { supabase } from "../../util/supabase.ts";
 
 /**
+ * TODO: this will cause a race condition. New elo values are calculated based on
+ * potentially old, stale elo values. Supabase doesn't support transactions, so
+ * to fix this, this would need to be written in SQL.
+ */
+
+/**
  * Standard ELO rating system with a dynamic K-value based on matches played
  * K = [ (10_000 - played) / 10_000 min=0, max=1 ] * 25 + 5
- * 
+ *
  * E_win is the probability that the winner will win
  * new elo = old elo + K * (actual - expected)
  */
@@ -26,17 +32,19 @@ export const handler = async (
   // console.info(`Loser: ${loser.name} K-value: ${K_lose} ${loser.elo} -> ${newLoserElo}`);
   // console.log();
 
-  const { error: updateWinnerError } = await supabase.from("companies").update({
-    elo: newWinnerElo,
-  }).eq("id", winner.id);
+  const { error: updateWinnerError } = await supabase.rpc("handle_battle", {
+    company_id: winner.id,
+    new_elo: newWinnerElo,
+  });
   if (updateWinnerError) {
     return new Response(JSON.stringify({ error: updateWinnerError }), {
       status: 500,
     });
   }
-  const { error: updateLoserError } = await supabase.from("companies").update({
-    elo: newLoserElo,
-  }).eq("id", loser.id);
+  const { error: updateLoserError } = await supabase.rpc("handle_battle", {
+    company_id: loser.id,
+    new_elo: newLoserElo,
+  });
   if (updateLoserError) {
     return new Response(JSON.stringify({ error: updateLoserError }), {
       status: 500,
