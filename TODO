@@ -1,3 +1,4 @@
+Captcha for add company form
 Extract supabase stuff to a separate file (code golf), TODO: should we create a new client for each user in prod?
 Server component for API fetches & loading wrapper
 Make it look decent on mobile

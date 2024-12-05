@@ -55,10 +55,12 @@ export function BattleIsland() {
         <CompanyRow
           onClick={() => handleBattle({ winner: data[0], loser: data[1] })}
           company={data[0]}
+          showElo={false}
         />
         <CompanyRow
           onClick={() => handleBattle({ winner: data[1], loser: data[0] })}
           company={data[1]}
+          showElo={false}
         />
       </ul>
     </>

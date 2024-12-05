@@ -8,10 +8,10 @@ export const handler = async (
   const { winner, loser } = await req.json();
 
   const E_win = 1 / (1 + 10 ** ((loser.elo - winner.elo) / 400));
-  const E_lose = 1 / (1 + 10 ** ((winner.elo - loser.elo) / 400));
+  const E_lose = 1 - E_win;
 
-  const newWinnerElo = winner.elo + 15 * (1 - E_win);
-  const newLoserElo = loser.elo + 15 * (0 - E_lose);
+  const newWinnerElo = winner.elo + 10 * (1 - E_win);
+  const newLoserElo = loser.elo + 10 * -E_lose;
 
   const { error: updateWinnerError } = await supabase.from("companies").update({
     elo: newWinnerElo,
