@@ -13,7 +13,7 @@ Then start the project:
 make start
 ```
 
-or, if make isn't installed:
+or, if `make` isn't installed:
 
 ```bash
 deno task start --env-file=.env
