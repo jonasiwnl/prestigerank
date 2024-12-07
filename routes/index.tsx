@@ -1,7 +1,6 @@
 import { FreshContext } from "$fresh/server.ts";
-import { CompanyRankingRow } from "../islands/CompanyRankingRow.tsx";
+import { CompanyRankings } from "../islands/CompanyRankings.tsx";
 import { supabase } from "../util/supabase.ts";
-import { Company } from "../util/types.ts";
 
 export default async function Home(_req: Request, _ctx: FreshContext) {
   const { data, error } = await supabase.from("companies").select().order(
@@ -24,13 +23,7 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
       <p class="my-4">
         Which company has the most prestige?
       </p>
-      <ul>
-        {data?.map((company: Company) => (
-          <CompanyRankingRow
-            company={company}
-          />
-        ))}
-      </ul>
+      <CompanyRankings data={data} />
     </div>
   );
 }

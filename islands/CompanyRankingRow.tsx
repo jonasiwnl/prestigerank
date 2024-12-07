@@ -1,27 +1,25 @@
 import { Company } from "../util/types.ts";
 import { ComponentProps } from "preact";
-import { useState } from "preact/hooks";
 
 export const CompanyRankingRow = (
-  { company, ...props }:
-    & { company: Company }
+  { company, index, showDropdown, setSelectedIndex, ...props }:
+    & {
+      company: Company;
+      index: number;
+      showDropdown: boolean;
+      setSelectedIndex: (index: number | null) => void;
+    }
     & ComponentProps<"li">,
 ) => {
-  const [showDropdown, setShowDropdown] = useState(false);
-
   return (
     <li
       class="bg-slate-300 rounded px-20 py-5 m-2 hover:cursor-pointer hover:bg-slate-400 relative"
+      onClick={() => setSelectedIndex(showDropdown ? null : index)}
       {...props}
     >
       <div class="flex flex-row justify-between">
         <p class="font-semibold">{company.name}</p>
-        <div class="flex flex-row">
-          <p class="mr-2">{Math.round(company.elo)}</p>
-          <button onClick={() => setShowDropdown(!showDropdown)}>
-            Info
-          </button>
-        </div>
+        <p class="mr-2">{Math.round(company.elo)}</p>
       </div>
       {showDropdown && (
         <>
