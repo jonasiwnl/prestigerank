@@ -6,7 +6,7 @@ export default function App({ Component }: PageProps) {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Idk what to name this yet</title>
+        <title>prestigerank</title>
       </head>
       <body>
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">

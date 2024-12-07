@@ -2,7 +2,8 @@
 Captcha for add company form
 Server component for API fetches & loading wrapper
 Make it look decent on mobile
+Don't show companies in ranking until they reach some threshold of battles
 
 == backend ==
-Avoid race condition when updating elo
 should we create a new supabase client for each user in prod?
+Avoid race condition when updating elo

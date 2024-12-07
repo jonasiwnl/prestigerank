@@ -1,4 +1,4 @@
-# I don't have a name yet
+# PrestigeRank
 
 A head-to-head user ranking system for company prestige. Built with Deno, Fresh,
 and Supabase.

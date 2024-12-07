@@ -1,5 +1,5 @@
 import { FreshContext } from "$fresh/server.ts";
-import { CompanyRow } from "../components/CompanyRow.tsx";
+import { CompanyRow } from "../islands/CompanyRow.tsx";
 import { supabase } from "../util/supabase.ts";
 import { Company } from "../util/types.ts";
 
@@ -13,7 +13,7 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
   }
 
   return (
-    <>
+    <div class="w-full">
       <img
         class="my-6"
         src="/logo.svg"
@@ -26,9 +26,9 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
       </p>
       <ul>
         {data?.map((company: Company) => (
-          <CompanyRow company={company} showElo={true} />
+          <CompanyRow company={company} showInfo={true} />
         ))}
       </ul>
-    </>
+    </div>
   );
 }

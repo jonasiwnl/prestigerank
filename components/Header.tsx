@@ -1,6 +1,6 @@
 export const Header = () => {
   return (
-    <header class="flex items-center max-screen-w-md mx-auto justify-between h-14 min-w-[320px] bg-slate-400 w-full">
+    <header class="flex items-center max-screen-w-md mx-auto justify-between h-14 min-w-[320px] w-full font-semibold">
       <a href="/">
         Cool Logo
       </a>

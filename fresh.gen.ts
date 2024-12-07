@@ -9,7 +9,9 @@ import * as $api_battle from "./routes/api/battle.ts";
 import * as $api_getmatchup from "./routes/api/getmatchup.ts";
 import * as $battle from "./routes/battle.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $AddCompanyForm from "./islands/AddCompanyForm.tsx";
 import * as $BattleIsland from "./islands/BattleIsland.tsx";
+import * as $CompanyRow from "./islands/CompanyRow.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -23,7 +25,9 @@ const manifest = {
     "./routes/index.tsx": $index,
   },
   islands: {
+    "./islands/AddCompanyForm.tsx": $AddCompanyForm,
     "./islands/BattleIsland.tsx": $BattleIsland,
+    "./islands/CompanyRow.tsx": $CompanyRow,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

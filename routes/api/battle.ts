@@ -9,7 +9,7 @@ import { supabase } from "../../util/supabase.ts";
 
 /**
  * Standard ELO rating system with a dynamic K-value based on matches played
- * K = [ (10_000 - played) / 10_000 min=0, max=1 ] * 15 + 5
+ * K = [ (2_000 - played) / 2_000 min=0, max=1 ] * 15 + 5
  * (basically between 5 and 20)
  *
  * E_win is the probability that the winner will win
@@ -22,9 +22,9 @@ export const handler = async (
   const { winner, loser } = await req.json();
 
   const E_win = 1 / (1 + 10 ** ((loser.elo - winner.elo) / 400));
-  const K_win = Math.max(10_000 - winner.battles, 0) / 10_000 * 15 + 5;
+  const K_win = Math.max(2000 - winner.battles, 0) / 2000 * 15 + 5;
   const E_lose = 1 - E_win;
-  const K_lose = Math.max(10_000 - loser.battles, 0) / 10_000 * 15 + 5;
+  const K_lose = Math.max(2000 - loser.battles, 0) / 2000 * 15 + 5;
 
   const newWinnerElo = winner.elo + K_win * (1 - E_win);
   const newLoserElo = loser.elo + K_lose * -E_lose;
