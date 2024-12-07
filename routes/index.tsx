@@ -1,5 +1,5 @@
 import { FreshContext } from "$fresh/server.ts";
-import { CompanyRow } from "../islands/CompanyRow.tsx";
+import { CompanyRankingRow } from "../islands/CompanyRankingRow.tsx";
 import { supabase } from "../util/supabase.ts";
 import { Company } from "../util/types.ts";
 
@@ -26,7 +26,9 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
       </p>
       <ul>
         {data?.map((company: Company) => (
-          <CompanyRow company={company} showInfo={true} />
+          <CompanyRankingRow
+            company={company}
+          />
         ))}
       </ul>
     </div>

@@ -1,4 +1,5 @@
 == frontend ==
+Add icons
 Captcha for add company form
 Server component for API fetches & loading wrapper
 Make it look decent on mobile

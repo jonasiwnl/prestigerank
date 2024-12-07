@@ -1,5 +1,5 @@
 import { Company } from "../util/types.ts";
-import { CompanyRow } from "./CompanyRow.tsx";
+import { CompanyBattleCard } from "../components/CompanyBattleCard.tsx";
 import { useEffect, useState } from "preact/hooks";
 
 export function BattleIsland() {
@@ -41,15 +41,13 @@ export function BattleIsland() {
     if (data.length === 2) {
       return (
         <ul>
-          <CompanyRow
+          <CompanyBattleCard
             onClick={() => handleBattle({ winner: data[0], loser: data[1] })}
             company={data[0]}
-            showInfo={false}
           />
-          <CompanyRow
+          <CompanyBattleCard
             onClick={() => handleBattle({ winner: data[1], loser: data[0] })}
             company={data[1]}
-            showInfo={false}
           />
         </ul>
       );
@@ -66,9 +64,11 @@ export function BattleIsland() {
   }
 
   return (
-    <>
-      <button onClick={fetchMatchup}>Skip</button>
+    <div class="w-1/2 flex flex-col">
+      <span class="w-full text-center">
+        <button class="font-semibold" onClick={fetchMatchup}>Skip</button>
+      </span>
       {getBattleHtml(loading, data)}
-    </>
+    </div>
   );
 }
