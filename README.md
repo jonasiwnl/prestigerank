@@ -1,6 +1,6 @@
 # PrestigeRank
 
-A head-to-head user ranking system for company prestige. Built with Deno, Fresh,
+A crowdsourced ranking system for company prestige. Built with Deno, Fresh,
 and Supabase.
 
 ## Building Locally
