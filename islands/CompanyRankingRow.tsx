@@ -26,10 +26,22 @@ export const CompanyRankingRow = (
           <p>elo: {company.elo}</p>
           <p>battles played: {company.battles}</p>
           <p>
-            <a href={company.website} target="_blank">website</a>
+            <a
+              class="text-gray-700 underline"
+              href={company.website}
+              target="_blank"
+            >
+              website
+            </a>
           </p>
           {company.levels_url && (
-            <a href={company.levels_url} target="_blank">levels.fyi</a>
+            <a
+              class="text-gray-700 underline"
+              href={company.levels_url}
+              target="_blank"
+            >
+              levels.fyi
+            </a>
           )}
         </>
       )}
