@@ -8,7 +8,7 @@ export default function App({ Component }: PageProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>prestigerank</title>
       </head>
-      <body>
+      <body class="bg-orange-50">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
           <Header />
           <Component />
