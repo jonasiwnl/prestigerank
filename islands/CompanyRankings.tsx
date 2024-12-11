@@ -10,7 +10,8 @@ export function CompanyRankings({ data }: { data: Company[] }) {
     <>
       <input
         value={search}
-        onInput={(e) => setSearch((e.target as HTMLInputElement).value.toLowerCase())}
+        onInput={(e) =>
+          setSearch((e.target as HTMLInputElement).value.toLowerCase())}
       />
       <ul>
         {data?.filter((company: Company) =>
