@@ -4,17 +4,26 @@ import { useState } from "preact/hooks";
 
 export function CompanyRankings({ data }: { data: Company[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [search, setSearch] = useState<string>("");
 
   return (
-    <ul>
-      {data?.map((company: Company, index: number) => (
-        <CompanyRankingRow
-          company={company}
-          index={index}
-          showDropdown={selectedIndex !== null && index === selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-        />
-      ))}
-    </ul>
+    <>
+      <input
+        value={search}
+        onInput={(e) => setSearch((e.target as HTMLInputElement).value.toLowerCase())}
+      />
+      <ul>
+        {data?.filter((company: Company) =>
+          search === "" || company.name.toLowerCase().startsWith(search)
+        ).map((company: Company, index: number) => (
+          <CompanyRankingRow
+            company={company}
+            index={index}
+            showDropdown={selectedIndex !== null && index === selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+          />
+        ))}
+      </ul>
+    </>
   );
 }

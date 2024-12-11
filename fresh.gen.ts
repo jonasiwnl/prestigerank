@@ -5,6 +5,7 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $add from "./routes/add.tsx";
+import * as $api_add from "./routes/api/add.ts";
 import * as $api_battle from "./routes/api/battle.ts";
 import * as $api_getmatchup from "./routes/api/getmatchup.ts";
 import * as $battle from "./routes/battle.tsx";
@@ -20,6 +21,7 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/add.tsx": $add,
+    "./routes/api/add.ts": $api_add,
     "./routes/api/battle.ts": $api_battle,
     "./routes/api/getmatchup.ts": $api_getmatchup,
     "./routes/battle.tsx": $battle,
