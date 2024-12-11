@@ -1,53 +1,49 @@
 import { FreshContext } from "$fresh/server.ts";
 import { supabase } from "../../util/supabase.ts";
 
-/**
- * TODO: this will cause a race condition. New elo values are calculated based on
- * potentially old, stale elo values. Supabase doesn't support transactions, so
- * to fix this, this would need to be written in SQL.
- */
-
-/**
- * Standard ELO rating system with a dynamic K-value based on matches played
- * K = [ (2_000 - played) / 2_000 min=0, max=1 ] * 15 + 5
- * (basically between 5 and 20)
- *
- * E_win is the probability that the winner will win
- * new elo = old elo + K * (actual - expected)
- */
+// To see actual ELO updating logic, see data/handle_battle.sql
 export const handler = async (
   req: Request,
   _ctx: FreshContext,
 ): Promise<Response> => {
-  const { winner, loser } = await req.json();
+  const { winner_id, loser_id } = await req.json();
 
-  const E_win = 1 / (1 + 10 ** ((loser.elo - winner.elo) / 400));
-  const K_win = Math.max(2000 - winner.battles, 0) / 2000 * 15 + 5;
-  const E_lose = 1 - E_win;
-  const K_lose = Math.max(2000 - loser.battles, 0) / 2000 * 15 + 5;
+  // *** Just for debugging - this typescript code isn't used in production ***
 
-  const newWinnerElo = winner.elo + K_win * (1 - E_win);
-  const newLoserElo = loser.elo + K_lose * -E_lose;
+  // const { data: winner } = await supabase
+  //   .from("companies")
+  //   .select("elo, battles, name")
+  //   .eq("id", winner_id)
+  //   .single();
 
-  // console.info(`Winner: ${winner.name} K-value: ${K_win} ${winner.elo} -> ${newWinnerElo}`);
-  // console.info(`Loser: ${loser.name} K-value: ${K_lose} ${loser.elo} -> ${newLoserElo}`);
+  // const { data: loser } = await supabase
+  //   .from("companies")
+  //   .select("elo, battles, name")
+  //   .eq("id", loser_id)
+  //   .single();
+
+  // const E_win = 1 / (1 + 10 ** ((loser.elo - winner.elo) / 400));
+  // const K_win = Math.max(2000 - winner.battles, 0) / 2000 * 15 + 5;
+  // const E_lose = 1 - E_win;
+  // const K_lose = Math.max(2000 - loser.battles, 0) / 2000 * 15 + 5;
+
+  // const newWinnerElo = winner.elo + K_win * (1 - E_win);
+  // const newLoserElo = loser.elo + K_lose * -E_lose;
+
+  // console.info(
+  //   `Winner: ${winner.name} K-value: ${K_win} ${winner.elo} -> ${newWinnerElo}`,
+  // );
+  // console.info(
+  //   `Loser: ${loser.name} K-value: ${K_lose} ${loser.elo} -> ${newLoserElo}`,
+  // );
   // console.log();
 
-  const { error: updateWinnerError } = await supabase.rpc("handle_battle", {
-    company_id: winner.id,
-    new_elo: newWinnerElo,
+  const { error } = await supabase.rpc("handle_battle", {
+    winner_id,
+    loser_id,
   });
-  if (updateWinnerError) {
-    return new Response(JSON.stringify({ error: updateWinnerError }), {
-      status: 500,
-    });
-  }
-  const { error: updateLoserError } = await supabase.rpc("handle_battle", {
-    company_id: loser.id,
-    new_elo: newLoserElo,
-  });
-  if (updateLoserError) {
-    return new Response(JSON.stringify({ error: updateLoserError }), {
+  if (error) {
+    return new Response(JSON.stringify({ error }), {
       status: 500,
     });
   }

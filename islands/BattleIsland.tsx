@@ -22,14 +22,14 @@ export function BattleIsland() {
   };
 
   const handleBattle = (
-    { winner, loser }: { winner: Company; loser: Company },
+    { winner_id, loser_id }: { winner_id: number; loser_id: number },
   ) => {
     fetch("/api/battle", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ winner, loser }),
+      body: JSON.stringify({ winner_id, loser_id }),
     });
     fetchMatchup();
   };
@@ -42,11 +42,13 @@ export function BattleIsland() {
       return (
         <ul>
           <CompanyBattleCard
-            onClick={() => handleBattle({ winner: data[0], loser: data[1] })}
+            onClick={() =>
+              handleBattle({ winner_id: data[0].id, loser_id: data[1].id })}
             company={data[0]}
           />
           <CompanyBattleCard
-            onClick={() => handleBattle({ winner: data[1], loser: data[0] })}
+            onClick={() =>
+              handleBattle({ winner_id: data[1].id, loser_id: data[0].id })}
             company={data[1]}
           />
         </ul>

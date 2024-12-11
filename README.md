@@ -1,7 +1,7 @@
 # PrestigeRank
 
-A crowdsourced ranking system for company prestige. Built with Deno, Fresh,
-and Supabase.
+A crowdsourced ranking system for company prestige. Built with Deno, Fresh, and
+Supabase.
 
 ## Building Locally
 
