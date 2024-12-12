@@ -6,3 +6,8 @@ export type Company = {
   website: string;
   levels_url: string;
 };
+
+export type Matchup = {
+  data: Company[];
+  token: string;
+};
