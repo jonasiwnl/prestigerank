@@ -9,7 +9,9 @@ export function CompanyRankings({ data }: { data: Company[] }) {
   return (
     <>
       <input
+        class="w-full p-2 bg-slate-300 rounded font-bold"
         value={search}
+        placeholder="Search..."
         onInput={(e) =>
           setSearch((e.target as HTMLInputElement).value.toLowerCase())}
       />

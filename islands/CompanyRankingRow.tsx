@@ -13,7 +13,7 @@ export const CompanyRankingRow = (
 ) => {
   return (
     <li
-      class="bg-slate-300 rounded px-20 py-5 m-2 hover:cursor-pointer hover:bg-slate-400 relative"
+      class="bg-slate-300 rounded px-20 py-5 my-2 hover:cursor-pointer hover:bg-slate-400 relative"
       onClick={() => setSelectedIndex(showDropdown ? null : index)}
       {...props}
     >
