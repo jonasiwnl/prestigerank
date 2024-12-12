@@ -12,19 +12,21 @@ export function CompanyRankings({ data }: { data: Company[] }) {
         class="w-full p-2 bg-slate-300 rounded font-semibold"
         value={search}
         placeholder="Search..."
-        onInput={(e) =>
-          setSearch((e.target as HTMLInputElement).value)}
+        onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
-        {data?.filter((company: Company) =>
-          search === "" || company.name.toLowerCase().startsWith(search.toLowerCase())
-        ).map((company: Company, index: number) => (
-          <CompanyRankingRow
-            company={company}
-            index={index}
-            showDropdown={selectedIndex !== null && index === selectedIndex}
-            setSelectedIndex={setSelectedIndex}
-          />
+        {data?.map((company: Company, index: number) => (
+          search === "" ||
+            company.name.toLowerCase().startsWith(search.toLowerCase())
+            ? (
+              <CompanyRankingRow
+                company={company}
+                index={index}
+                showDropdown={selectedIndex !== null && index === selectedIndex}
+                setSelectedIndex={setSelectedIndex}
+              />
+            )
+            : null
         ))}
       </ul>
     </>

@@ -18,8 +18,11 @@ export const CompanyRankingRow = (
       {...props}
     >
       <div class="flex flex-row justify-between font-semibold">
-        <p>{company.name}</p>
-        <p class="mr-2">{Math.round(company.elo)}</p>
+        <div class="flex flex-row">
+          <p class="mr-3">{index + 1}</p>
+          <p>{company.name}</p>
+        </div>
+        <p>{Math.round(company.elo)}</p>
       </div>
       {showDropdown && (
         <>
