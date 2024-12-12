@@ -9,15 +9,15 @@ export function CompanyRankings({ data }: { data: Company[] }) {
   return (
     <>
       <input
-        class="w-full p-2 bg-slate-300 rounded font-bold"
+        class="w-full p-2 bg-slate-300 rounded font-semibold"
         value={search}
         placeholder="Search..."
         onInput={(e) =>
-          setSearch((e.target as HTMLInputElement).value.toLowerCase())}
+          setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
         {data?.filter((company: Company) =>
-          search === "" || company.name.toLowerCase().startsWith(search)
+          search === "" || company.name.toLowerCase().startsWith(search.toLowerCase())
         ).map((company: Company, index: number) => (
           <CompanyRankingRow
             company={company}

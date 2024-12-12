@@ -17,8 +17,8 @@ export const CompanyRankingRow = (
       onClick={() => setSelectedIndex(showDropdown ? null : index)}
       {...props}
     >
-      <div class="flex flex-row justify-between">
-        <p class="font-semibold">{company.name}</p>
+      <div class="flex flex-row justify-between font-semibold">
+        <p>{company.name}</p>
         <p class="mr-2">{Math.round(company.elo)}</p>
       </div>
       {showDropdown && (
