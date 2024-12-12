@@ -5,9 +5,20 @@ export const handler = async (
   _req: Request,
   _ctx: FreshContext,
 ): Promise<Response> => {
-  const { data, error } = await supabase.from("get_matchup").select();
+  let { data, error } = await supabase.from("get_matchup").select();
   if (error) {
     return new Response(error.message, { status: 500 });
   }
-  return new Response(JSON.stringify(data), { status: 200 });
+  if (!data) {
+    return new Response("No data found", { status: 404 });
+  }
+
+  const token = `${String(Date.now()).slice(-10)}.${crypto.randomUUID()}`;
+  ({ error } = await supabase.from("battle_tokens").insert({
+    token,
+    company_1: data[0].id,
+    company_2: data[1].id,
+  }));
+
+  return new Response(JSON.stringify({ data, token }), { status: 200 });
 };

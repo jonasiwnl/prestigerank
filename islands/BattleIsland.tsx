@@ -1,23 +1,24 @@
-import { Company } from "../util/types.ts";
+import { Company, Matchup } from "../util/types.ts";
 import { CompanyBattleCard } from "../components/CompanyBattleCard.tsx";
 import { useEffect, useState } from "preact/hooks";
 
 export function BattleIsland() {
   const [data, setData] = useState<Company[]>([]);
+  const [token, setToken] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchMatchup = async () => {
     setLoading(true);
 
-    const data = await fetch("/api/getmatchup").then((res) => res.json()).catch(
-      (error) => {
-        console.error(error);
-        setError(error.message);
-      },
+    const data: Matchup = await fetch("/api/getmatchup").then((res) =>
+      res.json()
+    ).catch(
+      (error) => setError(error.message),
     );
 
-    setData(data);
+    setData(data.data);
+    setToken(data.token);
     setLoading(false);
   };
 
@@ -29,7 +30,7 @@ export function BattleIsland() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ winner_id, loser_id }),
+      body: JSON.stringify({ winner_id, loser_id, token }),
     });
     fetchMatchup();
   };
