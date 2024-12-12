@@ -13,7 +13,7 @@ export const handler = async (
     return new Response("No data found", { status: 404 });
   }
 
-  const token = `${String(Date.now()).slice(-10)}.${crypto.randomUUID()}`;
+  const token = crypto.randomUUID();
   ({ error } = await supabase.from("battle_tokens").insert({
     token,
     company_1: data[0].id,
