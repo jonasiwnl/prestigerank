@@ -68,7 +68,7 @@ export function BattleIsland() {
 
   return (
     <div class="w-1/2 flex flex-col text-center">
-      <button class="font-semibold" onClick={fetchMatchup}>Skip</button>
+      <button class="font-semibold my-1" onClick={fetchMatchup}>Skip</button>
       {getBattleHtml(loading, data)}
     </div>
   );
