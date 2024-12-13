@@ -3,7 +3,7 @@ import { CompanyRankingRow } from "./CompanyRankingRow.tsx";
 import { useState } from "preact/hooks";
 
 export function CompanyRankings({ data }: { data: Company[] }) {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedRanking, setSelectedRanking] = useState<number | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
@@ -30,10 +30,10 @@ export function CompanyRankings({ data }: { data: Company[] }) {
               ? (
                 <CompanyRankingRow
                   company={company}
-                  index={ranking}
-                  showDropdown={selectedIndex !== null &&
-                    index === selectedIndex}
-                  setSelectedIndex={setSelectedIndex}
+                  ranking={ranking}
+                  showDropdown={selectedRanking !== null &&
+                    ranking === selectedRanking}
+                  setSelectedRanking={setSelectedRanking}
                 />
               )
               : null

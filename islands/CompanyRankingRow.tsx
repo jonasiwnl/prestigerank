@@ -2,24 +2,25 @@ import { Company } from "../util/types.ts";
 import { ComponentProps } from "preact";
 
 export const CompanyRankingRow = (
-  { company, index, showDropdown, setSelectedIndex, ...props }:
+  { company, ranking, showDropdown, setSelectedRanking, ...props }:
     & {
       company: Company;
-      index: number;
+      ranking: number;
       showDropdown: boolean;
-      setSelectedIndex: (index: number | null) => void;
+      setSelectedRanking: (index: number | null) => void;
     }
     & ComponentProps<"li">,
 ) => {
   return (
     <li
       class="bg-slate-300 rounded px-20 py-5 my-2 hover:cursor-pointer hover:bg-slate-400 relative"
-      onClick={() => setSelectedIndex(showDropdown ? null : index)}
+      onClick={() => setSelectedRanking(showDropdown ? null : ranking)}
       {...props}
     >
       <div class="flex flex-row justify-between font-semibold">
         <div class="flex flex-row">
-          <p class="mr-3">{index + 1}</p>
+          {/* Ranking is 0-indexed - i.e. 0, 1, 2 but we want 1, 2, 3 */}
+          <p class="mr-3">{ranking + 1}</p>
           <p>{company.name}</p>
         </div>
         <p>{Math.round(company.elo)}</p>
