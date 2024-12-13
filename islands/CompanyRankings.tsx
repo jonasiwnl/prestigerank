@@ -4,6 +4,7 @@ import { useState } from "preact/hooks";
 
 export function CompanyRankings({ data }: { data: Company[] }) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
   return (
@@ -15,20 +16,37 @@ export function CompanyRankings({ data }: { data: Company[] }) {
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
-        {data?.map((company: Company, index: number) => (
-          search === "" ||
+        {data
+          // Generate company ranking
+          ?.map((company: Company, ranking: number) => ({ company, ranking }))
+          // Filter by potential search query
+          .filter(({ company }) =>
+            search === "" ||
             company.name.toLowerCase().startsWith(search.toLowerCase())
-            ? (
-              <CompanyRankingRow
-                company={company}
-                index={index}
-                showDropdown={selectedIndex !== null && index === selectedIndex}
-                setSelectedIndex={setSelectedIndex}
-              />
-            )
-            : null
-        ))}
+          )
+          // Display either top 25 or all depending on showAll
+          .map(({ company, ranking }, index) => (
+            (showAll || index < 25)
+              ? (
+                <CompanyRankingRow
+                  company={company}
+                  index={ranking}
+                  showDropdown={selectedIndex !== null &&
+                    index === selectedIndex}
+                  setSelectedIndex={setSelectedIndex}
+                />
+              )
+              : null
+          ))}
       </ul>
+      <div class="w-full flex justify-center">
+        <button
+          class="w-1/3 bg-slate-300 rounded py-2 mt-4 font-semibold"
+          onClick={() => setShowAll(!showAll)}
+        >
+          {showAll ? "Show Less" : "Show More"}
+        </button>
+      </div>
     </>
   );
 }
