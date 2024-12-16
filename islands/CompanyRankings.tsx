@@ -7,6 +7,15 @@ export function CompanyRankings({ data }: { data: Company[] }) {
   const [showAll, setShowAll] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
 
+  const companyRankings = data
+    // Generate company ranking
+    ?.map((company: Company, ranking: number) => ({ company, ranking }))
+    // Filter by potential search query
+    .filter(({ company }) =>
+      search === "" ||
+      company.name.toLowerCase().startsWith(search.toLowerCase())
+    );
+
   return (
     <>
       <input
@@ -16,16 +25,9 @@ export function CompanyRankings({ data }: { data: Company[] }) {
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
-        {data
-          // Generate company ranking
-          ?.map((company: Company, ranking: number) => ({ company, ranking }))
-          // Filter by potential search query
-          .filter(({ company }) =>
-            search === "" ||
-            company.name.toLowerCase().startsWith(search.toLowerCase())
-          )
+        {
           // Display either top 25 or all depending on showAll
-          .map(({ company, ranking }, index) => (
+          companyRankings.map(({ company, ranking }, index) => (
             (showAll || index < 25)
               ? (
                 <CompanyRankingRow
@@ -37,16 +39,20 @@ export function CompanyRankings({ data }: { data: Company[] }) {
                 />
               )
               : null
-          ))}
+          ))
+        }
       </ul>
-      <div class="w-full flex justify-center">
-        <button
-          class="w-1/3 bg-slate-300 rounded py-2 mt-4 font-semibold"
-          onClick={() => setShowAll(!showAll)}
-        >
-          {showAll ? "Show Less" : "Show More"}
-        </button>
-      </div>
+      {companyRankings.length > 25 &&
+        (
+          <div class="w-full flex justify-center">
+            <button
+              class="w-1/3 bg-slate-300 rounded py-2 mt-4 font-semibold"
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? "show less" : "show more"}
+            </button>
+          </div>
+        )}
     </>
   );
 }
