@@ -1,11 +1,12 @@
 import { FreshContext } from "$fresh/server.ts";
-import { supabase } from "../../util/supabase.ts";
+import { getSupabaseClient } from "../../util/supabase.ts";
 
 export const handler = async (
   req: Request,
   _ctx: FreshContext,
 ): Promise<Response> => {
   const { name, website, levels_url } = await req.json();
+  const supabase = getSupabaseClient()
 
   const { error } = await supabase.from("requests").insert({
     name,

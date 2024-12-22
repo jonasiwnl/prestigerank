@@ -1,5 +1,5 @@
 import { FreshContext } from "$fresh/server.ts";
-import { supabase } from "../../util/supabase.ts";
+import { getSupabaseClient } from "../../util/supabase.ts";
 
 // To see actual ELO updating logic, see data/handle_battle.sql
 export const handler = async (
@@ -7,6 +7,7 @@ export const handler = async (
   _ctx: FreshContext,
 ): Promise<Response> => {
   const { winner_id, loser_id, token } = await req.json();
+  const supabase = getSupabaseClient();
 
   // *** TOKEN VALIDATION *** //
   let { data, error } = await supabase.from("battle_tokens").select(

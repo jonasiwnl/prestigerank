@@ -1,8 +1,10 @@
 import { FreshContext } from "$fresh/server.ts";
 import { CompanyRankings } from "../islands/CompanyRankings.tsx";
-import { supabase } from "../util/supabase.ts";
+import { getSupabaseClient } from "../util/supabase.ts";
 
 export default async function Home(_req: Request, _ctx: FreshContext) {
+  const supabase = getSupabaseClient()
+
   const { data, error } = await supabase.from("companies").select().order(
     "elo",
     { ascending: false },

@@ -8,7 +8,6 @@ Make it look decent on mobile
 company trajectories (up, down, with a little arrow, maybe how much a company moved)
 
 == backend ==
-should we create a new supabase client for each user in prod?
 *use separate databases for prod and dev
 
 * - not necessary for launch

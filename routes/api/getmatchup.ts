@@ -1,10 +1,12 @@
 import { FreshContext } from "$fresh/server.ts";
-import { supabase } from "../../util/supabase.ts";
+import { getSupabaseClient } from "../../util/supabase.ts";
 
 export const handler = async (
   _req: Request,
   _ctx: FreshContext,
 ): Promise<Response> => {
+  const supabase = getSupabaseClient();
+
   let { data, error } = await supabase.from("get_matchup").select();
   if (error) {
     return new Response(error.message, { status: 500 });

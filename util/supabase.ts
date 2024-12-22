@@ -1,6 +1,24 @@
-import { createClient } from "@supabase/supabase-js";
+// This file is meant to be used server-side
 
-export const supabase = createClient(
-  Deno.env.get("SUPABASE_URL")!,
-  Deno.env.get("SUPABASE_ANON_KEY")!,
-);
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+
+let devClient: SupabaseClient | null = null;
+
+export const getSupabaseClient = () => {
+  if (Deno.env.get("PRESTIGERANK_DEV") === undefined) {
+    // PROD
+    return createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_ANON_KEY")!,
+    );
+  } else {
+    // DEV
+    if (devClient === null) {
+      devClient = createClient(
+        Deno.env.get("SUPABASE_URL")!,
+        Deno.env.get("SUPABASE_ANON_KEY")!,
+      );
+    }
+    return devClient;
+  }
+};

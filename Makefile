@@ -1,7 +1,7 @@
 .PHONY: start deploy-dev deploy-prod
 
 start:
-	deno task start --env-file=.env
+	deno task start
 
 deploy-dev:
 	deployctl deploy --save-config
