@@ -1,5 +1,6 @@
 import { Company } from "../util/types.ts";
 import { ComponentProps } from "preact";
+import { getColorValue } from "../util/company-ranking-colors.ts";
 
 export const CompanyRankingRow = (
   { company, ranking, showDropdown, setSelectedRanking, ...props }:
@@ -11,9 +12,13 @@ export const CompanyRankingRow = (
     }
     & ComponentProps<"li">,
 ) => {
+  const colorValue = getColorValue(ranking);
+
   return (
     <li
-      class="bg-slate-300 rounded px-20 py-5 my-2 hover:cursor-pointer hover:bg-slate-400 relative"
+      class={`bg-slate-${colorValue} rounded px-20 py-5 my-2 hover:cursor-pointer hover:bg-slate-${
+        colorValue + 100
+      } relative`}
       onClick={() => setSelectedRanking(showDropdown ? null : ranking)}
       {...props}
     >

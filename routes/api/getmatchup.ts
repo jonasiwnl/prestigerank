@@ -22,7 +22,7 @@ export const handler = async (
   if (error) {
     return new Response(error.message, { status: 500 });
   }
-  if (!count) {
+  if (count === null) {
     return new Response("Couldn't retrieve request count", { status: 500 });
   }
   if (count >= ALLOWED_REQUESTS_PER_HOUR) {
