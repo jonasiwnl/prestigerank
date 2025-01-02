@@ -12,7 +12,7 @@ export const handler = async (
   // *** TOKEN VALIDATION *** //
   let { data, error } = await supabase.from("battle_tokens").select(
     "company_1, company_2",
-  ).filter("token", "eq", token).single();
+  ).eq("token", token).single();
   if (error) {
     return new Response(error.message, { status: 500 });
   }

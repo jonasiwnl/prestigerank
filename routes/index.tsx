@@ -3,7 +3,7 @@ import { CompanyRankings } from "../islands/CompanyRankings.tsx";
 import { getSupabaseClient } from "../util/supabase.ts";
 
 export default async function Home(_req: Request, _ctx: FreshContext) {
-  const supabase = getSupabaseClient()
+  const supabase = getSupabaseClient();
 
   const { data, error } = await supabase.from("companies").select().order(
     "elo",
