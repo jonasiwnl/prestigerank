@@ -1,18 +1,20 @@
 type Theme = {
-  background: string;
-  text: string;
-  link: string;
+  bgValue: number;
+  textValue: number;
+  linkValue: number;
 };
 
 const colorValues = [
-  { max: 3, value: 600 },
-  { max: 10, value: 400 },
+  { max: 3, theme: { bgValue: 600, textValue: 300, linkValue: 400 } },
+  { max: 10, theme: { bgValue: 400, textValue: 900, linkValue: 800 } },
 ];
 
-export function getColorValue(idx: number): number {
-  // Linear search for now - At N=4 it really isn't worth it to do a binary search
-  for (const { max, value } of colorValues) {
-    if (idx < max) return value;
+const defaultTheme = { bgValue: 300, textValue: 900, linkValue: 700 };
+
+export function getColorValue(idx: number): Theme {
+  for (const { max, theme } of colorValues) {
+    if (idx < max) return theme;
   }
-  return 300;
+
+  return defaultTheme;
 }

@@ -12,12 +12,12 @@ export const CompanyRankingRow = (
     }
     & ComponentProps<"li">,
 ) => {
-  const colorValue = getColorValue(ranking);
+  const colorTheme = getColorValue(ranking);
 
   return (
     <li
-      class={`bg-slate-${colorValue} rounded px-20 py-5 my-2 hover:cursor-pointer hover:bg-slate-${
-        colorValue + 100
+      class={`bg-slate-${colorTheme.bgValue} rounded px-20 py-5 my-2 hover:cursor-pointer hover:bg-slate-${
+        colorTheme.bgValue + 100
       } relative`}
       onClick={() => setSelectedRanking(showDropdown ? null : ranking)}
       {...props}
@@ -25,18 +25,24 @@ export const CompanyRankingRow = (
       <div class="flex flex-row justify-between font-semibold">
         <div class="flex flex-row">
           {/* Ranking is 0-indexed - i.e. 0, 1, 2 but we want 1, 2, 3 */}
-          <p class="mr-3">{ranking + 1}</p>
-          <p>{company.name}</p>
+          <p class={`mr-3 text-gray-${colorTheme.textValue}`}>{ranking + 1}</p>
+          <p class={`text-gray-${colorTheme.textValue}`}>{company.name}</p>
         </div>
-        <p>{Math.round(company.elo)}</p>
+        <p class={`text-gray-${colorTheme.textValue}`}>
+          {Math.round(company.elo)}
+        </p>
       </div>
       {showDropdown && (
         <>
-          <p>elo: {company.elo}</p>
-          <p>battles played: {company.battles}</p>
+          <p class={`text-gray-${colorTheme.textValue}`}>
+            elo: {company.elo}
+          </p>
+          <p class={`text-gray-${colorTheme.textValue}`}>
+            battles played: {company.battles}
+          </p>
           <p>
             <a
-              class="text-gray-700 underline"
+              class={`text-gray-${colorTheme.linkValue} underline`}
               href={company.website}
               target="_blank"
             >
@@ -45,7 +51,7 @@ export const CompanyRankingRow = (
           </p>
           {company.levels_url && (
             <a
-              class="text-gray-700 underline"
+              class={`text-gray-${colorTheme.linkValue} underline`}
               href={company.levels_url}
               target="_blank"
             >
