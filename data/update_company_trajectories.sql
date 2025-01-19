@@ -27,6 +27,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT cron.schedule('update-company-trajectories', '0 0 * * *', 'SELECT update_company_trajectories()');
+SELECT cron.schedule('update-company-trajectories', '0 1 * * 0', 'SELECT update_company_trajectories()');
 
 SELECT * FROM cron.job;
