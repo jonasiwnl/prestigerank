@@ -19,19 +19,14 @@ BEGIN
     FROM companies;
 
     UPDATE companies c
-    SET trajectory =
-        CASE
-            WHEN r.current_ranking > r.previous_ranking THEN 1
-            WHEN  r.current_ranking = r.previous_ranking THEN 0
-            ELSE -1
-        END
+    SET previous_ranking = r.current_ranking
     FROM ranking_data r
-    WHERE c.id = r.id;
+    where c.id = r.id;
 
     DROP TABLE ranking_data;
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT cron.schedule('update-company-trajectories', '0 1 * * *', 'SELECT update_company_trajectories()');
+SELECT cron.schedule('update-company-trajectories', '0 0 * * *', 'SELECT update_company_trajectories()');
 
 SELECT * FROM cron.job;
