@@ -4,9 +4,13 @@ export const Footer = () => {
       <a class="hover:text-orange-400" href="/about">
         <p>about</p>
       </a>
+      {
+        /*
       <a>
         <p>request a feature</p>
       </a>
+      */
+      }
     </footer>
   );
 };

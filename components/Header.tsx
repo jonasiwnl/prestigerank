@@ -16,7 +16,7 @@ export const Header = () => {
       <div class="flex justify-between w-1/2 mx-12">
         <a class="hover:text-orange-400" href="/">rankings</a>
         <a class="hover:text-orange-400" href="/battle">battle</a>
-        <a class="hover:text-orange-400" href="/add">add a company</a>
+        {/* <a class="hover:text-orange-400" href="/add">add a company</a> */}
       </div>
     </header>
   );

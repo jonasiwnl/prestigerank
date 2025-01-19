@@ -1,11 +1,8 @@
 == frontend ==
-Add icons (add, battle)
-Captcha for add company form
+Add icons (add, battle, trajectories)
 Make it look decent on mobile
+*Captcha for add company form
 *Don't show companies in ranking until they reach some threshold of battles
-
-== fullstack ==
-company trajectories (up, down, with a little arrow, maybe how much a company moved)
 
 == backend ==
 *use separate databases for prod and dev
