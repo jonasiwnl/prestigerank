@@ -24,6 +24,9 @@ export const CompanyRankingRow = (
     >
       <div class="flex flex-row justify-between font-semibold">
         <div class="flex flex-row">
+          <p class={`text-gray-${colorTheme.textValue} mr-3`}>
+            {company.previous_ranking > ranking + 1 ? "up" : company.previous_ranking < ranking + 1 ? "down" : "neutral"}
+          </p>
           {/* Ranking is 0-indexed - i.e. 0, 1, 2 but we want 1, 2, 3 */}
           <p class={`mr-3 text-gray-${colorTheme.textValue}`}>{ranking + 1}</p>
           <p class={`text-gray-${colorTheme.textValue}`}>{company.name}</p>

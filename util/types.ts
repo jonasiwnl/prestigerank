@@ -5,6 +5,7 @@ export type Company = {
   battles: bigint;
   website: string;
   levels_url: string;
+  previous_ranking: number;
 };
 
 export type Matchup = {
