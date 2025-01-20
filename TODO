@@ -1,9 +1,9 @@
 == frontend ==
-Add icons (add, battle, trajectories)
 General frontend touchups
 Make it look decent on mobile
 *Captcha for add company form
 *Don't show companies in ranking until they reach some threshold of battles
+*Double arrow for big trajectory moves
 
 == backend ==
 *use separate databases for prod and dev
