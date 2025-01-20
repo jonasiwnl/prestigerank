@@ -5,7 +5,7 @@ type Theme = {
 };
 
 const colorValues = [
-  { max: 3, theme: { bgValue: 600, textValue: 300, linkValue: 400 } },
+  { max: 3, theme: { bgValue: 600, textValue: 200, linkValue: 300 } },
   { max: 10, theme: { bgValue: 400, textValue: 900, linkValue: 800 } },
 ];
 
