@@ -26,10 +26,10 @@ export const CompanyRankingRow = (
         <div class="flex flex-row">
           <p class={`text-gray-${colorTheme.textValue} mr-3`}>
             {company.previous_ranking > ranking + 1
-              ? "up"
+              ? <img width="20" height="20" src="/up-arrow.svg" />
               : company.previous_ranking < ranking + 1
-              ? "down"
-              : "neutral"}
+              ? <img width="20" height="20" class="rotate-180" src="/up-arrow.svg" />
+              : <img width="20" height="20" src="/horizontal-line.svg" />}
           </p>
           {/* Ranking is 0-indexed - i.e. 0, 1, 2 but we want 1, 2, 3 */}
           <p class={`mr-3 text-gray-${colorTheme.textValue}`}>{ranking + 1}</p>
