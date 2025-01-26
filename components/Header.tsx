@@ -13,7 +13,7 @@ export const Header = () => {
           prestigerank
         </div>
       </a>
-      <div class="flex justify-right w-1/2 mx-12">
+      <div class="flex justify-right w-1/2 ml-12">
         <div class="flex mr-10">
           <img width="20" height="20" src="/leaderboard.svg" />
           <a class="hover:text-orange-400 ml-1" href="/">rankings</a>

@@ -10,7 +10,7 @@ export default function App({ Component }: PageProps) {
         <title>prestigerank</title>
       </head>
       <body class="bg-orange-50">
-        <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
+        <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center px-4">
           <Header />
           <Component />
           <Footer />
