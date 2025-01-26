@@ -37,7 +37,7 @@ export function BattleIsland() {
 
   const getBattleHtml = (loading: boolean, data: Company[]) => {
     if (loading) {
-      return <p>Loading...</p>;
+      return <p class="font-semibold">loading...</p>;
     }
     if (data.length === 2) {
       return (
@@ -55,7 +55,7 @@ export function BattleIsland() {
         </ul>
       );
     }
-    return <p>Sorry, we couldn't find a matchup</p>;
+    return <p>sorry, we couldn't find a matchup</p>;
   };
 
   useEffect(() => {
@@ -63,12 +63,12 @@ export function BattleIsland() {
   }, []);
 
   if (error) {
-    return <p>Sorry, we encountered an error: {error}</p>;
+    return <p>sorry, we encountered an error: {error}</p>;
   }
 
   return (
     <div class="w-1/2 flex flex-col text-center">
-      <button class="font-semibold my-1" onClick={fetchMatchup}>Skip</button>
+      <button class="font-semibold mt-1 mb-4" onClick={fetchMatchup}>skip</button>
       {getBattleHtml(loading, data)}
     </div>
   );

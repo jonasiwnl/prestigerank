@@ -1,5 +1,4 @@
 == frontend ==
-General frontend touchups
 Make it look decent on mobile
 *Captcha for add company form
 *Don't show companies in ranking until they reach some threshold of battles

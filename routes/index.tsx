@@ -15,16 +15,12 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
 
   return (
     <div class="w-full">
-      <img
-        class="my-6"
-        src="/logo.svg"
-        width="128"
-        height="128"
-        alt="the PrestigeRank logo: a crown"
-      />
-      <p class="my-4 font-semibold">
+      <div class="text-center my-8">
+        <p class="text-xl font-semibold mb-4">rankings</p>
+      <p class="font-semibold">
         which company has the most prestige?
       </p>
+      </div>
       <CompanyRankings data={data} />
     </div>
   );
