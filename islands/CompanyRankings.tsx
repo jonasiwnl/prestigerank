@@ -19,7 +19,7 @@ export function CompanyRankings({ data }: { data: Company[] }) {
   return (
     <>
       <input
-        class="w-full py-2 px-3 mb-2 bg-slate-300 rounded font-semibold"
+        class="w-full py-2 px-3 mb-2 bg-slate-300 rounded-xl font-semibold"
         value={search}
         placeholder="Search..."
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
