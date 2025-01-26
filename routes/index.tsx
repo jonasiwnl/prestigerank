@@ -17,9 +17,9 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
     <div class="w-full">
       <div class="text-center my-8">
         <p class="text-xl font-semibold mb-4">rankings</p>
-      <p class="font-semibold">
-        which company has the most prestige?
-      </p>
+        <p class="font-semibold">
+          which company has the most prestige?
+        </p>
       </div>
       <CompanyRankings data={data} />
     </div>

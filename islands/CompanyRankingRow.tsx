@@ -28,7 +28,14 @@ export const CompanyRankingRow = (
             {company.previous_ranking > ranking + 1
               ? <img width="20" height="20" src="/up-arrow-green.svg" />
               : company.previous_ranking < ranking + 1
-              ? <img width="20" height="20" class="rotate-180" src="/up-arrow-red.svg" />
+              ? (
+                <img
+                  width="20"
+                  height="20"
+                  class="rotate-180"
+                  src="/up-arrow-red.svg"
+                />
+              )
               : <img width="20" height="20" src="/horizontal-line.svg" />}
           </p>
           {/* Ranking is 0-indexed - i.e. 0, 1, 2 but we want 1, 2, 3 */}

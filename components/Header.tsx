@@ -14,13 +14,13 @@ export const Header = () => {
         </div>
       </a>
       <div class="flex justify-right w-1/2 mx-12">
-      <div class="flex mr-10">
-        <img width="20" height="20" src="/leaderboard.svg" />
-      <a class="hover:text-orange-400 ml-1" href="/">rankings</a>
-      </div>
+        <div class="flex mr-10">
+          <img width="20" height="20" src="/leaderboard.svg" />
+          <a class="hover:text-orange-400 ml-1" href="/">rankings</a>
+        </div>
         <div class="flex">
-        <img width="14" height="14" src="/swords-crossed.svg" />
-        <a class="hover:text-orange-400 ml-1" href="/battle">battle</a>
+          <img width="14" height="14" src="/swords-crossed.svg" />
+          <a class="hover:text-orange-400 ml-1" href="/battle">battle</a>
         </div>
         {/* <a class="hover:text-orange-400" href="/add">add a company</a> */}
       </div>
