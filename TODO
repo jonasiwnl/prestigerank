@@ -1,10 +1,10 @@
 == frontend ==
-Make it look decent on mobile
+*Make battle page company cards look nicer on mobile
 *Captcha for add company form
 *Don't show companies in ranking until they reach some threshold of battles
-*Double arrow for big trajectory moves
 
 == backend ==
+*backups of data
 *use separate databases for prod and dev
 
 * - not necessary for launch
