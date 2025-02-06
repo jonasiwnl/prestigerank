@@ -1,5 +1,5 @@
 import { Company } from "../util/types.ts";
-import { CompanyRankingRow } from "./CompanyRankingRow.tsx";
+import { CompanyRankingRow } from "../components/CompanyRankingRow.tsx";
 import { useState } from "preact/hooks";
 
 export function CompanyRankings({ data }: { data: Company[] }) {

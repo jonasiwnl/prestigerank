@@ -8,7 +8,7 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
   const { data, error } = await supabase.from("companies").select().order(
     "elo",
     { ascending: false },
-  ); // .limit(20);
+  );
   if (error) {
     return <p>Sorry, we encountered an error: {error.message}</p>;
   }
