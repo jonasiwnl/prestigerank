@@ -8,3 +8,6 @@ deploy-dev:
 
 deploy-prod:
 	deployctl deploy --save-config --prod
+
+count:
+	cloc --exclude-dir=node_modules .
