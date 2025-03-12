@@ -4,7 +4,12 @@ start:
 	deno task start
 
 deploy-dev:
-	deployctl deploy --save-config
+	deno task build
+	deployctl deploy --env-file=.env
 
 deploy-prod:
-	deployctl deploy --save-config --prod
+	deno task build
+	deployctl deploy --env-file=.env --prod
+
+count:
+	cloc --exclude-dir=node_modules .
