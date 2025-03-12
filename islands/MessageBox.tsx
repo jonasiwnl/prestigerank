@@ -37,11 +37,12 @@ export function MessageBox() {
   return (
     messageSent ? <p class="font-semibold">message sent.</p> : (
       <>
-        <input
-          class="px-3 py-2 mt-10 mb-3 bg-slate-300 rounded-xl font-semibold overflow-scroll"
+        <textarea
+          class="px-3 py-2 mt-10 mb-3 bg-slate-300 rounded-xl font-semibold min-h-[4vh] max-h-[50vh]"
           type={message}
           value={message}
           placeholder="leave a message..."
+          maxlength={511}
           onInput={(e) => setMessage(e.currentTarget.value)}
         />
         <button
