@@ -8,13 +8,14 @@ export const handler = async (
   _req: Request,
   ctx: FreshContext,
 ): Promise<Response> => {
+  const ip = ctx.remoteAddr.hostname;
   const supabase = getSupabaseClient();
 
   // ** RATE LIMITING ** //
   const { count, error } = await supabase.from("battle_tokens")
     .select("*", { count: "exact", head: true }).eq(
       "ip",
-      ctx.remoteAddr.hostname,
+      ip,
     ).gte(
       "created_at",
       (new Date(Date.now() - ONE_HOUR_IN_MILLISECONDS)).toISOString(),
@@ -46,7 +47,7 @@ export const handler = async (
       token,
       company_1: data[0].id,
       company_2: data[1].id,
-      ip: ctx.remoteAddr.hostname,
+      ip,
     });
 
   return new Response(JSON.stringify({ data, token }), { status: 200 });

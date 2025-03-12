@@ -46,6 +46,7 @@ export function CompanyRankings({ data }: { data: Company[] }) {
         (
           <div class="w-full flex justify-center">
             <button
+              type="button"
               class="w-1/3 bg-slate-300 rounded-xl py-2 mt-4 font-semibold"
               onClick={() => setShowAll(!showAll)}
             >

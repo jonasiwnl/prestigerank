@@ -20,7 +20,8 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
           which company has the most prestige?
         </p>
         <p class="text-sm mt-2 font-semibold">
-          rankings are determined by battles. if you think they're wrong, then vote!
+          rankings are determined by battles. if you think they're wrong, then
+          vote!
         </p>
       </div>
       <CompanyRankings data={data} />

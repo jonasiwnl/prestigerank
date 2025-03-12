@@ -9,11 +9,14 @@ import * as $add from "./routes/add.tsx";
 import * as $api_add from "./routes/api/add.ts";
 import * as $api_battle from "./routes/api/battle.ts";
 import * as $api_getmatchup from "./routes/api/getmatchup.ts";
+import * as $api_message from "./routes/api/message.ts";
 import * as $battle from "./routes/battle.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $message from "./routes/message.tsx";
 import * as $AddCompanyForm from "./islands/AddCompanyForm.tsx";
 import * as $BattleIsland from "./islands/BattleIsland.tsx";
 import * as $CompanyRankings from "./islands/CompanyRankings.tsx";
+import * as $MessageBox from "./islands/MessageBox.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -25,13 +28,16 @@ const manifest = {
     "./routes/api/add.ts": $api_add,
     "./routes/api/battle.ts": $api_battle,
     "./routes/api/getmatchup.ts": $api_getmatchup,
+    "./routes/api/message.ts": $api_message,
     "./routes/battle.tsx": $battle,
     "./routes/index.tsx": $index,
+    "./routes/message.tsx": $message,
   },
   islands: {
     "./islands/AddCompanyForm.tsx": $AddCompanyForm,
     "./islands/BattleIsland.tsx": $BattleIsland,
     "./islands/CompanyRankings.tsx": $CompanyRankings,
+    "./islands/MessageBox.tsx": $MessageBox,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

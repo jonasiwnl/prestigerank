@@ -68,7 +68,11 @@ export function BattleIsland() {
 
   return (
     <div class="w-1/2 flex flex-col text-center">
-      <button class="font-semibold mt-1 mb-4" onClick={fetchMatchup}>
+      <button
+        type="button"
+        class="font-semibold mt-1 mb-4"
+        onClick={fetchMatchup}
+      >
         skip
       </button>
       {getBattleHtml(loading, data)}

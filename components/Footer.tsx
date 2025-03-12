@@ -1,15 +1,13 @@
 export const Footer = () => {
   return (
-    <footer class="flex gap-5 w-full mt-28 mb-10 font-semibold">
+    <footer class="flex gap-6 w-full mt-28 mb-10 font-semibold">
       <a class="hover:text-orange-400" href="/about">
         <p>about</p>
       </a>
       {
-        /*
-      <a>
-        <p>request a feature</p>
-      </a>
-      */
+        <a class="hover:text-orange-400" href="/message">
+          <p>leave a message</p>
+        </a>
       }
     </footer>
   );
