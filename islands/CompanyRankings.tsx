@@ -1,11 +1,27 @@
 import { Company } from "../util/types.ts";
 import { CompanyRankingRow } from "../components/CompanyRankingRow.tsx";
-import { useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
+
+function useCommandKFocus(ref: { current: HTMLInputElement | null }) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.metaKey && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        ref.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [ref]);
+}
 
 export function CompanyRankings({ data }: { data: Company[] }) {
   const [selectedRanking, setSelectedRanking] = useState<number | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  useCommandKFocus(searchInputRef);
 
   const companyRankings = data
     // Generate company ranking
@@ -19,9 +35,10 @@ export function CompanyRankings({ data }: { data: Company[] }) {
   return (
     <>
       <input
+        ref={searchInputRef}
         class="w-full py-2 px-3 mb-2 bg-slate-300 rounded-xl font-semibold"
         value={search}
-        placeholder="Search..."
+        placeholder="Search (⌘+k)"
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
