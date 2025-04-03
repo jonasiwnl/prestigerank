@@ -2,7 +2,10 @@ import { FreshContext } from "$fresh/server.ts";
 import { CompanyRankings } from "../islands/CompanyRankings.tsx";
 import { getSupabaseClient } from "../util/supabase.ts";
 
-export default async function Home(_req: Request, _ctx: FreshContext) {
+export default async function Home(req: Request, _ctx: FreshContext) {
+  const userAgent = req.headers.get("user-agent") || "";
+  const mac = userAgent.includes("Mac");
+
   const supabase = getSupabaseClient();
 
   const { data, error } = await supabase.from("companies").select().order(
@@ -24,7 +27,7 @@ export default async function Home(_req: Request, _ctx: FreshContext) {
           vote!
         </p>
       </div>
-      <CompanyRankings data={data} />
+      <CompanyRankings data={data} mac={mac} />
     </div>
   );
 }

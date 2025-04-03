@@ -8,7 +8,7 @@ export const CompanyBattleCard = (
 ) => {
   return (
     <div
-      class="bg-slate-300 rounded-xl py-5 m-2 hover:cursor-pointer hover:bg-slate-400 text-center"
+      class="bg-slate-300 rounded-xl py-5 m-2 hover:cursor-pointer hover:bg-slate-400 text-center shadow-md"
       {...props}
     >
       <p class="font-semibold">{company.name}</p>

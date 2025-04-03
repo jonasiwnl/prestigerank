@@ -15,16 +15,12 @@ function useCommandKFocus(ref: { current: HTMLInputElement | null }) {
   }, [ref]);
 }
 
-export function CompanyRankings({ data }: { data: Company[] }) {
+export function CompanyRankings(
+  { data, mac }: { data: Company[]; mac: boolean },
+) {
   const [selectedRanking, setSelectedRanking] = useState<number | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
-
-  // Determine key combo based on the platform
-  const keyCombo =
-    (typeof navigator !== "undefined" && /Mac/i.test(navigator.userAgent))
-      ? "⌘+k"
-      : "Ctrl+k";
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   useCommandKFocus(searchInputRef);
@@ -42,9 +38,9 @@ export function CompanyRankings({ data }: { data: Company[] }) {
     <>
       <input
         ref={searchInputRef}
-        class="w-full py-2 px-3 mb-2 bg-slate-300 rounded-xl font-semibold"
+        class="w-full py-2 px-3 mb-2 bg-slate-300 rounded-xl font-semibold shadow-md"
         value={search}
-        placeholder={`Search (${keyCombo})`}
+        placeholder={`search (${mac ? "⌘" : "ctrl"} + k)`}
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
@@ -73,7 +69,7 @@ export function CompanyRankings({ data }: { data: Company[] }) {
           <div class="w-full flex justify-center">
             <button
               type="button"
-              class="w-1/3 bg-slate-300 rounded-xl py-2 mt-4 font-semibold"
+              class="w-1/3 bg-slate-300 rounded-xl py-2 mt-4 font-semibold shadow-md hover:cursor-pointer hover:bg-slate-400"
               onClick={() => setShowAll(!showAll)}
             >
               {showAll ? "show less" : "show more"}
