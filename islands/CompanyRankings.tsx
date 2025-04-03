@@ -16,7 +16,7 @@ function useCommandKFocus(ref: { current: HTMLInputElement | null }) {
 }
 
 export function CompanyRankings(
-  { data, mac }: { data: Company[]; mac: boolean },
+  { data, searchString }: { data: Company[]; searchString: string },
 ) {
   const [selectedRanking, setSelectedRanking] = useState<number | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
@@ -40,7 +40,7 @@ export function CompanyRankings(
         ref={searchInputRef}
         class="w-full py-2 px-3 mb-2 bg-slate-300 rounded-xl font-semibold shadow-md"
         value={search}
-        placeholder={`search (${mac ? "⌘" : "ctrl"} + k)`}
+        placeholder={`search${searchString}`}
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>

@@ -4,7 +4,10 @@ import { getSupabaseClient } from "../util/supabase.ts";
 
 export default async function Home(req: Request, _ctx: FreshContext) {
   const userAgent = req.headers.get("user-agent") || "";
-  const mac = userAgent.includes("Mac");
+  const isMobile = userAgent.includes("Mobile");
+  const searchString = isMobile
+    ? ""
+    : (userAgent.includes("Mac") ? " (⌘ + k)" : " (ctrl + k)");
 
   const supabase = getSupabaseClient();
 
@@ -27,7 +30,7 @@ export default async function Home(req: Request, _ctx: FreshContext) {
           vote!
         </p>
       </div>
-      <CompanyRankings data={data} mac={mac} />
+      <CompanyRankings data={data} searchString={searchString} />
     </div>
   );
 }
