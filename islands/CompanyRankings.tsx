@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "preact/hooks";
 function useCommandKFocus(ref: { current: HTMLInputElement | null }) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.metaKey && e.key.toLowerCase() === "k") {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         ref.current?.focus();
       }
@@ -19,6 +19,12 @@ export function CompanyRankings({ data }: { data: Company[] }) {
   const [selectedRanking, setSelectedRanking] = useState<number | null>(null);
   const [showAll, setShowAll] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+
+  // Determine key combo based on the platform
+  const keyCombo =
+    (typeof navigator !== "undefined" && /Mac/i.test(navigator.userAgent))
+      ? "⌘+k"
+      : "Ctrl+k";
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   useCommandKFocus(searchInputRef);
@@ -38,7 +44,7 @@ export function CompanyRankings({ data }: { data: Company[] }) {
         ref={searchInputRef}
         class="w-full py-2 px-3 mb-2 bg-slate-300 rounded-xl font-semibold"
         value={search}
-        placeholder="Search (⌘+k)"
+        placeholder={`Search (${keyCombo})`}
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
       />
       <ul>
@@ -59,6 +65,9 @@ export function CompanyRankings({ data }: { data: Company[] }) {
           ))
         }
       </ul>
+      {companyRankings.length === 0 && (
+        <p class="text-center font-semibold mt-2">no companies found</p>
+      )}
       {companyRankings.length > 25 &&
         (
           <div class="w-full flex justify-center">
