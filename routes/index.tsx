@@ -26,7 +26,7 @@ export default async function Home(req: Request, _ctx: FreshContext) {
         <p class="text-sm mt-2 font-semibold w-full md:w-3/4 mx-auto">
           which tech companies are the most prestigous to work for?
         </p>
-        <p class="text-sm mt-2 font-semibold w-full md:w-3/4 mx-auto">
+        <p class="text-sm font-semibold w-full md:w-3/4 mx-auto">
           rankings are determined by{" "}
           <a href="/battle" class="underline hover:text-primary">battles</a>
           {" "}
