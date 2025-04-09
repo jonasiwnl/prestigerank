@@ -38,7 +38,7 @@ export function CompanyRankings(
     <>
       <input
         ref={searchInputRef}
-        class="w-full py-2 px-3 mb-2 rounded-xl font-semibold shadow-md bg-background border border-foreground hover:border-secondary"
+        class="w-full py-2 px-3 mb-2 rounded-xl font-semibold shadow-md bg-background border border-foreground hover:border-secondary placeholder-secondary"
         value={search}
         placeholder={`search${searchString}`}
         onInput={(e) => setSearch((e.target as HTMLInputElement).value)}

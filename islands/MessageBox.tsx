@@ -38,7 +38,7 @@ export function MessageBox() {
     messageSent ? <p class="font-semibold">message sent.</p> : (
       <>
         <textarea
-          class="px-3 py-2 mt-10 mb-3 rounded-xl font-semibold min-h-[4vh] max-h-[50vh] bg-background border border-foreground hover:border-secondary"
+          class="px-3 py-2 mt-10 mb-3 rounded-xl font-semibold min-h-[4vh] max-h-[50vh] bg-background border border-foreground hover:border-secondary placeholder-secondary"
           type={message}
           value={message}
           placeholder="leave a message..."

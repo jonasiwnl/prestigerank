@@ -16,7 +16,7 @@ export const CompanyRankingRow = (
 
   return (
     <li
-      class={`${colorTheme.bg} border ${colorTheme.border} rounded-xl shadow-md px-20 py-5 my-2 hover:cursor-pointer relative`}
+      class={`${colorTheme.bg} border ${colorTheme.border} rounded-xl shadow-md px-6 md:px-20 py-5 my-2 hover:cursor-pointer relative`}
       onClick={() => setSelectedRanking(showDropdown ? null : ranking)}
       {...props}
     >
