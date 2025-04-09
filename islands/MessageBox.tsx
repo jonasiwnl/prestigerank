@@ -38,7 +38,7 @@ export function MessageBox() {
     messageSent ? <p class="font-semibold">message sent.</p> : (
       <>
         <textarea
-          class="px-3 py-2 mt-10 mb-3 bg-slate-300 rounded-xl font-semibold min-h-[4vh] max-h-[50vh]"
+          class="px-3 py-2 mt-10 mb-3 rounded-xl font-semibold min-h-[4vh] max-h-[50vh] bg-background border border-foreground hover:border-secondary"
           type={message}
           value={message}
           placeholder="leave a message..."
@@ -47,7 +47,7 @@ export function MessageBox() {
         />
         <button
           disabled={loading}
-          class="font-semibold hover:text-orange-400"
+          class="font-semibold hover:text-secondary hover:border-secondary rounded-xl border border-foreground px-4 py-2"
           type="submit"
           onClick={submitMessage}
         >

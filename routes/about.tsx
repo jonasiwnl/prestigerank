@@ -4,7 +4,7 @@ export default function About() {
       <p class="font-semibold mt-16">
         I made this as a successor to{" "}
         <a
-          class="hover:text-orange-400"
+          class="hover:text-primary underline"
           href="https://prestigehunt.com"
           target="_blank"
         >

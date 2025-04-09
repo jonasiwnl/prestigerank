@@ -70,7 +70,7 @@ export function BattleIsland() {
     <div class="w-3/4 md:w-1/2 flex flex-col text-center">
       <button
         type="button"
-        class="font-semibold mt-1 mb-4"
+        class="font-semibold mt-1 mb-4 hover:text-secondary"
         onClick={fetchMatchup}
       >
         skip

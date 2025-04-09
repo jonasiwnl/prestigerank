@@ -23,11 +23,13 @@ export default async function Home(req: Request, _ctx: FreshContext) {
     <div class="w-full">
       <div class="text-center my-8">
         <p class="text-xl font-semibold">
-          which company has the most prestige?
+          rankings
         </p>
         <p class="text-sm mt-2 font-semibold">
-          rankings are determined by battles. if you think they're wrong, then
-          vote!
+          rankings are determined by the results of{" "}
+          <a href="/battle" class="underline hover:text-primary">battles</a>
+          {" "}
+          and are updated immediately.
         </p>
       </div>
       <CompanyRankings data={data} searchString={searchString} />

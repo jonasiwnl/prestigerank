@@ -1,20 +1,50 @@
 type Theme = {
-  bgValue: number;
-  textValue: number;
-  linkValue: number;
+  bg: string;
+  text: string;
+  border: string;
+  link: string;
 };
 
-const colorValues = [
-  { max: 3, theme: { bgValue: 600, textValue: 200, linkValue: 300 } },
-  { max: 10, theme: { bgValue: 400, textValue: 900, linkValue: 800 } },
+const colorValues: { max: number; theme: Theme }[] = [
+  {
+    max: 3,
+    theme: {
+      bg: "bg-bg3",
+      text: "text-foreground",
+      link: "text-green",
+      border: "border-bg2",
+    },
+  },
+  {
+    max: 10,
+    theme: {
+      bg: "bg-bg2",
+      text: "text-foreground",
+      link: "text-green",
+      border: "border-secondary",
+    },
+  },
+  {
+    max: 20,
+    theme: {
+      bg: "bg-background",
+      text: "text-foreground",
+      link: "text-green",
+      border: "border-secondary",
+    },
+  },
 ];
 
-const defaultTheme = { bgValue: 300, textValue: 900, linkValue: 700 };
+const defaultTheme: Theme = {
+  bg: "bg-gruvbox-blue",
+  text: "text-foreground",
+  link: "text-green",
+  border: "border-secondary",
+};
 
 export function getColorValue(idx: number): Theme {
   for (const { max, theme } of colorValues) {
     if (idx < max) return theme;
   }
-
   return defaultTheme;
 }

@@ -8,8 +8,12 @@ export default function App({ Component }: PageProps) {
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>prestigerank</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+        />
       </head>
-      <body class="bg-orange-50">
+      <body class="bg-background text-foreground">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center px-4">
           <Header />
           <Component />
