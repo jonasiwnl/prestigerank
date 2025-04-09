@@ -8,18 +8,18 @@ export default function Error404() {
       </Head>
       <div class="px-4 py-8 mx-auto">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-          <img
+          {/* <img
             class="my-6"
             src="/logo.svg"
             width="128"
             height="128"
             alt="the PrestigeRank logo: a crown"
-          />
-          <h1 class="text-4xl font-bold">404 - Page not found</h1>
+          /> */}
+          <h1 class="text-4xl font-bold">404 - page not found</h1>
           <p class="my-4">
-            The page you were looking for doesn't exist.
+            the page you were looking for doesn't exist.
           </p>
-          <a href="/" class="underline">Go back home</a>
+          <a href="/" class="underline hover:text-primary">go back home</a>
         </div>
       </div>
     </>
