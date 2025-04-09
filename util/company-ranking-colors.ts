@@ -12,7 +12,7 @@ const colorValues: { max: number; theme: Theme }[] = [
       bg: "bg-bg3",
       text: "text-foreground",
       link: "text-green",
-      border: "border-bg2",
+      border: "border-foreground",
     },
   },
   {
@@ -30,7 +30,7 @@ const colorValues: { max: number; theme: Theme }[] = [
       bg: "bg-background",
       text: "text-foreground",
       link: "text-green",
-      border: "border-secondary",
+      border: "border-bg3",
     },
   },
 ];
@@ -39,7 +39,7 @@ const defaultTheme: Theme = {
   bg: "bg-gruvbox-blue",
   text: "text-foreground",
   link: "text-green",
-  border: "border-secondary",
+  border: "border-bg3",
 };
 
 export function getColorValue(idx: number): Theme {

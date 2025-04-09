@@ -4,16 +4,12 @@ import { BattleIsland } from "../islands/BattleIsland.tsx";
 export default function Battle(_req: Request, _ctx: FreshContext) {
   return (
     <>
-      <img
-        class="my-6"
-        src="/logo.svg"
-        width="128"
-        height="128"
-        alt="the PrestigeRank logo: a crown"
-      />
-      <p class="text-xl font-bold mb-8">
-        battle
-      </p>
+      <div class="mt-8 mb-6 text-center w-full">
+        <p class="text-2xl font-semibold">battle</p>
+        <p class="text-sm font-semibold mt-2 w-full md:w-3/4 mx-auto">
+          choose which company you think is more prestigious.
+        </p>
+      </div>
       <div class="w-full h-36 flex justify-center">
         <BattleIsland />
       </div>

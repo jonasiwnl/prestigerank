@@ -22,14 +22,15 @@ export default async function Home(req: Request, _ctx: FreshContext) {
   return (
     <div class="w-full">
       <div class="text-center my-8">
-        <p class="text-xl font-semibold">
-          rankings
+        <p class="text-2xl font-semibold">rankings</p>
+        <p class="text-sm mt-2 font-semibold w-full md:w-3/4 mx-auto">
+          which tech companies are the most prestigous to work for?
         </p>
-        <p class="text-sm mt-2 font-semibold">
-          rankings are determined by the results of{" "}
+        <p class="text-sm mt-2 font-semibold w-full md:w-3/4 mx-auto">
+          rankings are determined by{" "}
           <a href="/battle" class="underline hover:text-primary">battles</a>
           {" "}
-          and are updated immediately.
+          completed by users and are updated immediately.
         </p>
       </div>
       <CompanyRankings data={data} searchString={searchString} />
