@@ -9,7 +9,7 @@ const colorValues: { max: number; theme: Theme }[] = [
   {
     max: 3,
     theme: {
-      bg: "bg-bg3 hover:bg-bg2",
+      bg: "bg-bg3 md:hover:bg-bg2",
       text: "text-foreground",
       link: "text-green",
       border: "border-foreground",
@@ -18,7 +18,7 @@ const colorValues: { max: number; theme: Theme }[] = [
   {
     max: 10,
     theme: {
-      bg: "bg-bg2 hover:bg-bg1",
+      bg: "bg-bg2 md:hover:bg-bg1",
       text: "text-foreground",
       link: "text-green",
       border: "border-secondary",
@@ -27,7 +27,7 @@ const colorValues: { max: number; theme: Theme }[] = [
   {
     max: 20,
     theme: {
-      bg: "bg-bg1 hover:bg-background",
+      bg: "bg-bg1 md:hover:bg-background",
       text: "text-foreground",
       link: "text-green",
       border: "border-bg3",
@@ -36,7 +36,7 @@ const colorValues: { max: number; theme: Theme }[] = [
 ];
 
 const defaultTheme: Theme = {
-  bg: "bg-bg1 hover:bg-background",
+  bg: "bg-bg1 md:hover:bg-background",
   text: "text-foreground",
   link: "text-green",
   border: "border-bg3",
