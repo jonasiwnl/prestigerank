@@ -14,6 +14,7 @@ export default {
           green: "#98971a",
           secondary: "#928374", // grayish color
           red: "#cc241d",
+          bg1: "#3c3836",
           bg2: "#504945",
           bg3: "#7c6f64",
         },
