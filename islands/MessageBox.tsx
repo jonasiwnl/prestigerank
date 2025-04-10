@@ -9,7 +9,6 @@ export function MessageBox() {
   const submitMessage = async () => {
     if (message === "") {
       setError("message can't be empty.");
-      setTimeout(() => setError(""), 4000);
       return;
     }
 
@@ -28,7 +27,6 @@ export function MessageBox() {
       setMessageSent(true);
     } else {
       setError(data.error ?? "couldn't send message.");
-      setTimeout(() => setError(""), 4000);
     }
 
     setLoading(false);
@@ -53,7 +51,7 @@ export function MessageBox() {
         >
           {loading ? "loading..." : "send"}
         </button>
-        <p class="text-red-500 font-semibold h-2">{error}</p>
+        <p class="text-red font-semibold h-2 mt-2">{error}</p>
       </>
     )
   );
