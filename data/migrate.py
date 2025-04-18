@@ -3,7 +3,7 @@
 import csv
 
 need = ["name", "rating", "headToHeads", "website", "levelsWebsite"]
-with open('latest_rankings_data_c.csv', 'r') as infile:
+with open('latest_rankings_data.csv', 'r') as infile:
     reader = csv.DictReader(infile)
     f = reader.fieldnames
     keep = [col for col in f if col in need]

@@ -72,7 +72,7 @@ id,name,rating,rank,tier,headToHeads,trending,category,website,levelsWebsite,bli
 -MtYom_eVxm_eXNrN1dU,Splunk,1000.697791558789,67,,3307,down,tech,http://splunk.com,http://levels.fyi/companies/splunk,,false,false
 -MtYomaeGsS2x__bqfxH,Spotify,1103.1359372852226,41,,3879,up,tech,http://spotify.com,http://levels.fyi/companies/spotify,,false,false
 -MtYombdCZF5DAPvfijg,Square,1123.3547012665454,32,F,3885,up,tech,http://square.com,http://levels.fyi/companies/square,,false,false
--MtYomccQSmlUkuXmsFj,Square,1104.6523120714978,39,,4249,none,tech,http://stripe.com,http://levels.fyi/companies/stripe,,false,true
+-MtYomccQSmlUkuXmsFj,Stripe,1104.6523120714978,39,,4249,none,tech,http://stripe.com,http://levels.fyi/companies/stripe,,false,true
 -MtYomdb29qg16vNT1M6,Tableau,867.6481691048325,100,,3236,none,tech,http://tableau.com,http://levels.fyi/companies/tableau,,false,false
 -MtYomecqYbr_woM9tWG,Tesla,1127.1071065908716,30,F,3772,none,tech,http://tesla.com,http://levels.fyi/companies/tesla,,false,false
 -MtYomfmTnmJr6hfx_jJ,Twilio,930.4751252907474,86,,3398,none,tech,http://twilio.com,http://levels.fyi/companies/twilio,,false,false
