@@ -8,18 +8,16 @@ def main():
         oldreader = csv.DictReader(oldfile)
         for row in oldreader:
             if row['category'] != 'tech': continue
-
-            print(row['name'], row['headToHeads'])
             oldcount[row['name']] = int(row['headToHeads'])
 
     bc = 0
     with open('backup.csv', 'r') as newfile:
         newreader = csv.DictReader(newfile)
         for row in newreader:
-            print(f'{row["name"]}: old={oldcount[row["name"]]}, new={int(row["battles"])}, diff={int(row["battles"]) - oldcount[row["name"]]}')
+            # print(f'{row["name"]}: old={oldcount[row["name"]]}, new={int(row["battles"])}, diff={int(row["battles"]) - oldcount[row["name"]]}')
             bc += int(row['battles']) - oldcount[row['name']]
 
-    print(f'Total battles played: {bc}, roughly {bc / 134:.2f} per company')
+    print(f'Total battles played: {bc}, roughly {bc / len(oldcount):.2f} per company')
 
 
 if __name__ == '__main__':
