@@ -8,6 +8,9 @@ export const Footer = () => {
       <a class="hover:text-primary" href="/message">
         <p>leave a message</p>
       </a>
+      <a class="hover:text-primary" href="https://github.com/jonasiwnl/prestigerank">
+        <p>github</p>
+      </a>
     </footer>
   );
 };
