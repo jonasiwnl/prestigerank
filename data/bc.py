@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# Battle count
+
 import csv
 
 def main():
