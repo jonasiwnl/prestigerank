@@ -2,10 +2,11 @@
 
 # Battle count
 
+from collections import defaultdict
 import csv
 
 def main():
-    oldcount = {}
+    oldcount = defaultdict(int)
     with open('latest_rankings_data.csv', 'r') as oldfile:
         oldreader = csv.DictReader(oldfile)
         for row in oldreader:
