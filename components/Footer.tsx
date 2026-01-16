@@ -1,14 +1,20 @@
 export const Footer = () => {
   return (
-    <footer class="flex gap-6 w-full mt-28 mb-10 font-semibold">
+    <footer class="flex gap-6 w-full mt-28 mb-10 min-w-[320px] font-semibold">
       <p>© 2026</p>
       <a class="hover:text-primary" href="/about">
         <p>about</p>
       </a>
-      <a class="hover:text-primary" href="/message">
+      <a class="hover:text-primary hidden md:block" href="/message">
         <p>leave a message</p>
       </a>
-      <a class="hover:text-primary" href="https://github.com/jonasiwnl/prestigerank">
+      <a class="hover:text-primary md:hidden" href="/message">
+        <p>message</p>
+      </a>
+      <a
+        class="hover:text-primary"
+        href="https://github.com/jonasiwnl/prestigerank"
+      >
         <p>github</p>
       </a>
     </footer>
