@@ -1,13 +1,10 @@
-.PHONY: start deploy-dev deploy-prod
+.PHONY: start deploy count
 
 start:
 	deno task start
 
-deploy-dev:
-	deployctl deploy --save-config
-
-deploy-prod:
-	deployctl deploy --save-config --prod
+deploy:
+	deno deploy
 
 count:
 	cloc --exclude-dir=node_modules .
