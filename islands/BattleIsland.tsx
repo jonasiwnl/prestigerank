@@ -10,16 +10,24 @@ export function BattleIsland() {
 
   const fetchMatchup = async () => {
     setLoading(true);
+    setError(null);
 
-    const data: Matchup = await fetch("/api/getmatchup").then((res) =>
-      res.json()
-    ).catch(
-      (error) => setError(error.message),
-    );
+    try {
+      const res = await fetch("/api/getmatchup");
+      const body = await res.json();
 
-    setData(data.data);
-    setToken(data.token);
-    setLoading(false);
+      if (!res.ok) {
+        throw new Error(body.error ?? "Failed to fetch matchup");
+      }
+
+      const data = body as Matchup;
+      setData(data.data);
+      setToken(data.token);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : String(error));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleBattle = (

@@ -4,6 +4,12 @@ import { getSupabaseClient } from "../../util/supabase.ts";
 const ALLOWED_REQUESTS_PER_HOUR = 3000;
 const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
 
+const jsonResponse = (body: unknown, status: number) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+
 export const handler = async (
   _req: Request,
   ctx: FreshContext,
@@ -21,23 +27,23 @@ export const handler = async (
       (new Date(Date.now() - ONE_HOUR_IN_MILLISECONDS)).toISOString(),
     );
   if (error) {
-    return new Response(error.message, { status: 500 });
+    return jsonResponse({ error: error.message }, 500);
   }
   if (count === null) {
-    return new Response("Couldn't retrieve request count", { status: 500 });
+    return jsonResponse({ error: "Couldn't retrieve request count" }, 500);
   }
   if (count >= ALLOWED_REQUESTS_PER_HOUR) {
-    return new Response("Rate limit exceeded", { status: 429 });
+    return jsonResponse({ error: "Rate limit exceeded" }, 429);
   }
   // ** RATE LIMITING ** //
 
   const { data, error: get_matchup_error } = await supabase.from("get_matchup")
     .select();
   if (get_matchup_error) {
-    return new Response(get_matchup_error.message, { status: 500 });
+    return jsonResponse({ error: get_matchup_error.message }, 500);
   }
-  if (!data) {
-    return new Response("No data found", { status: 404 });
+  if (!data || data.length < 2) {
+    return jsonResponse({ error: "No matchup found" }, 404);
   }
 
   const token = crypto.randomUUID();
@@ -50,5 +56,5 @@ export const handler = async (
       ip,
     });
 
-  return new Response(JSON.stringify({ data, token }), { status: 200 });
+  return jsonResponse({ data, token }, 200);
 };
