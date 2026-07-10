@@ -13,6 +13,7 @@ export default function App({ Component }: PageProps) {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
         />
+        <script src="https://pl30307873.effectivecpmnetwork.com/c7/5b/74/c75b74a7d17a992729c08856ccd5f709.js"></script>
       </head>
       <body class="bg-background text-foreground">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center px-4">
