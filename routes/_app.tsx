@@ -1,6 +1,8 @@
 import { type PageProps } from "$fresh/server.ts";
 import { Footer } from "../components/Footer.tsx";
 import { Header } from "../components/Header.tsx";
+import { Ad } from "../islands/Ad.tsx";
+
 export default function App({ Component }: PageProps) {
   return (
     <html>
@@ -19,17 +21,8 @@ export default function App({ Component }: PageProps) {
           <Header />
           <Component />
           <Footer />
+          <Ad />
         </div>
-        <script dangerouslySetInnerHTML={{
-          __html: `window.atOptions = {
-            'key' : '27ef6b090f99c5183fb8998d9f8e132e',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };`
-        }}></script>
-        <script src="https://www.highperformanceformat.com/27ef6b090f99c5183fb8998d9f8e132e/invoke.js" defer></script>
       </body>
     </html>
   );

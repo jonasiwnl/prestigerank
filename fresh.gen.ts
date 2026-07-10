@@ -12,6 +12,7 @@ import * as $battle from "./routes/battle.tsx";
 import * as $contact from "./routes/contact.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $privacy from "./routes/privacy.tsx";
+import * as $Ad from "./islands/Ad.tsx";
 import * as $BattleIsland from "./islands/BattleIsland.tsx";
 import * as $CompanyRankings from "./islands/CompanyRankings.tsx";
 import * as $MessageBox from "./islands/MessageBox.tsx";
@@ -31,6 +32,7 @@ const manifest = {
     "./routes/privacy.tsx": $privacy,
   },
   islands: {
+    "./islands/Ad.tsx": $Ad,
     "./islands/BattleIsland.tsx": $BattleIsland,
     "./islands/CompanyRankings.tsx": $CompanyRankings,
     "./islands/MessageBox.tsx": $MessageBox,
