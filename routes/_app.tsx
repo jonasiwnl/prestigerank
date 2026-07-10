@@ -7,6 +7,7 @@ export default function App({ Component }: PageProps) {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-adsense-account" content="ca-pub-6844887814693345"></meta>
         <title>prestigerank</title>
         <link
           rel="stylesheet"
