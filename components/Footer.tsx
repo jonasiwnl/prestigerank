@@ -8,6 +8,9 @@ export const Footer = () => {
       <a class="hover:text-primary" href="/contact">
         <p>contact</p>
       </a>
+      <a class="hover:text-primary" href="/privacy">
+        <p>privacy</p>
+      </a>
       <a
         class="hover:text-primary"
         href="https://github.com/jonasiwnl/prestigerank"
