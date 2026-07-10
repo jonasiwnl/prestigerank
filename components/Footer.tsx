@@ -5,11 +5,8 @@ export const Footer = () => {
       <a class="hover:text-primary" href="/about">
         <p>about</p>
       </a>
-      <a class="hover:text-primary hidden md:block" href="/message">
-        <p>leave a message</p>
-      </a>
-      <a class="hover:text-primary md:hidden" href="/message">
-        <p>message</p>
+      <a class="hover:text-primary" href="/contact">
+        <p>contact</p>
       </a>
       <a
         class="hover:text-primary"

@@ -9,8 +9,8 @@ import * as $api_battle from "./routes/api/battle.ts";
 import * as $api_getmatchup from "./routes/api/getmatchup.ts";
 import * as $api_message from "./routes/api/message.ts";
 import * as $battle from "./routes/battle.tsx";
+import * as $contact from "./routes/contact.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $message from "./routes/message.tsx";
 import * as $BattleIsland from "./islands/BattleIsland.tsx";
 import * as $CompanyRankings from "./islands/CompanyRankings.tsx";
 import * as $MessageBox from "./islands/MessageBox.tsx";
@@ -25,8 +25,8 @@ const manifest = {
     "./routes/api/getmatchup.ts": $api_getmatchup,
     "./routes/api/message.ts": $api_message,
     "./routes/battle.tsx": $battle,
+    "./routes/contact.tsx": $contact,
     "./routes/index.tsx": $index,
-    "./routes/message.tsx": $message,
   },
   islands: {
     "./islands/BattleIsland.tsx": $BattleIsland,
